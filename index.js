@@ -76,29 +76,22 @@ console.log("etCounter " + etCounter);
 
 // Bonus 2
 
-const phraseToCheck = "Hello"
-let lowercasephrase = phraseToCheck.toLowerCase()
-
-let arrayWords = lowercasephrase.split(' ');
+const phraseToCheck = "No 'x' in Nixon"
 let wordsTogether = "";
 let wordsTogetherReversed = ""
-if(arrayWords.length > 1)
+const regex = /[!@#$%^&*()+=[\]{};:'"<>,.?|\\`~]/g;
+
+let lowercasephrase = phraseToCheck.toLowerCase()
+let arrayWords = lowercasephrase.split(' ');
+wordsTogether = arrayWords.join('')
+
+let wordsClean = wordsTogether.replace(regex, '');
+console.log(wordsClean)
+for (let i = 0; i < wordsClean.length; i++)
 {
-    let arrWordsReversed = arrayWords.reverse();
-    wordsTogether = arrayWords.join('')
-    wordsTogetherReversed = arrWordsReversed.join('');
+    wordsTogetherReversed += wordsClean[wordsClean.length - 1 -i]
 }
-else
-{
-    let letterArray = arrayWords[0].split()
-    let reversedWordarr = letterArray.reverse()
-    let reverseWord = reversedWordarr.join('')
-}
-
-console.log(arrWordsReversed)
-
-
-if(wordsTogether === wordsTogetherReversed || reverseWord === arrayWords[0])
+if(wordsClean === wordsTogetherReversed)
     console.log("It's a palindrome");
 else
     console.log("It's not a palindrome");
